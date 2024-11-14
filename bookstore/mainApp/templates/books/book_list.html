@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for book in books %}
+  <div class='book-item'>
+    {% load static %}
+    <img width="100px" height="100px" src="{% static book.image|cut:'main_app/static/' %}"/>   
+    <h2>{{ book.title }}</h2>
+    <p>{{ book.author }}</p>
+    <p>{{ book.category }}</p>
+    <p>{{ book.rating }}</p>
+    <p>{{ book.price }}</p>
+  </div>
+    <a class='book-item' href="{% url 'book_detail' book.id %}">View Details</a>
+    <a class='book-item' href="{% url 'book_update' book.id %}">Edit</a>
+    <a class='book-item' href="{% url 'book_delete' book.id %}">Delete</a>
+  
+{% endfor %}
+
+{% endblock %}

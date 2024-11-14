@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='book-item'>
+<h1>{{ book.title }}</h1>
+{% comment %} <img src="{{ book.image.url }}" alt="{{ book.title }}"  /> {% endcomment %}
+<p>Author: {{ book.author }}</p>
+<p>Category: {{ book.category }}</p>
+<p>Rating: {{ book.rating }}</p>
+<p>Price: {{ book.price }}</p>
+</div>
+<a class='book-item' href="{% url 'book_update' book.id %}">Edit</a>
+<a class='book-item' href="{% url 'book_delete' book.id %}">Delete</a>
+<a class='book-item' href="{% url 'add_to_cart' book.id %}">Add to Cart</a>
+<a class='book-item' href="{% url 'add_review' book.id %}">Add Review</a>
+
+<h2>Reviews</h2>
+{% for review in book.reviews.all %}
+    <p>Rating: {{ review.rating }}</p>
+    <p>{{ review.comment }}</p>
+    <p>By: {{ review.user.username }}</p>
+{% endfor %}
+
+
+{% endblock %}

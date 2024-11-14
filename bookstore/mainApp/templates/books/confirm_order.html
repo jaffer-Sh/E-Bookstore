@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Confirm Your Order</h1>
+    <p><strong>Delivery Option:</strong> {{ delivery_option }}</p>
+
+    {% if delivery_option == "delivery" %}
+        <h2>Choose Your Address</h2>
+        <p>Please select one of your saved addresses or add a new one:</p>
+        <ul>
+            {% for address in addresses %}
+                <li>{{ address.city }}, {{ address.state }} - {{ address.details }}
+                    <a href="{% url 'select_address' address.id %}">Select</a>
+                </li>
+            {% empty %}
+                <li>No saved addresses. <a href="{% url 'add_address' %}">Add a New Address</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><strong>Total Price:</strong> ${{ total_cost }}</p>
+
+    <form action="{% url 'confirm_payment' %}" method="post">
+        {% csrf_token %}
+        <button class='btn' type="submit">Proceed to Payment</button>
+    </form>
+{% endblock %}

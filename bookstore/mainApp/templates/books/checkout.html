@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Checkout</h1>
+
+<h2>Order Summary</h2>
+{% for item in cart_items %}
+    <div>
+        <h3>{{ item.book.title }}</h3>
+        <p>Author: {{ item.book.author }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Price per unit: ${{ item.book.price }}</p>        
+    </div>
+    <hr>
+{% endfor %}
+<h2>Total Cost: ${{ total_cost }}</h2>
+
+<form action="{% url 'checkout' %}" method="POST">
+  {% csrf_token %}
+
+  <h3>Delivery Options</h3>
+  <label>
+    <input type="radio" name="delivery_option" value="branch" required onclick="toggleAddress(false)"> Branch Pickup
+  </label>
+  <label>
+    <input type="radio" name="delivery_option" value="delivery" required onclick="toggleAddress(true)"> Home Delivery
+  </label>
+
+  <div id="address-section" style="display: none;">
+      <h3>Delivery Address</h3>
+      <select name="address_id">
+        {% for address in addresses %}
+          <option value="{{ address.id }}">{{ address.address_line }}, {{ address.city }}</option>
+        {% endfor %}
+      </select>
+  </div>
+  
+  <button class='btn' type="submit">Place Order</button>
+</form>
+
+<script>
+  function toggleAddress(show) {
+    document.getElementById("address-section").style.display = show ? "block" : "none";
+  }
+</script>
+
+{% endblock %}

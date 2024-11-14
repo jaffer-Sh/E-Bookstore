@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Your Orders</h2>
+
+{% if orders %}
+    {% for order in orders %}
+        <div>
+            <h3>Order #{{ order.id }}</h3>
+            <p>Delivery Option: {{ order.get_delivery_option_display }}</p>
+            <p>Total Cost: ${{ order.total_cost|floatformat:2 }}</p>
+            <h4>Items:</h4>
+            <ul>
+                {% for item in order.items.all %}
+                    <li>{{ item.book.title }} - Quantity: {{ item.quantity }} - ${{ item.book.price }}</li>
+                {% endfor %}
+            </ul>
+            <hr>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>You have no orders yet.</p>
+{% endif %}
+
+{% endblock %}

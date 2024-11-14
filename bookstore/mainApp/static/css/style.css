@@ -1,0 +1,149 @@
+/* General styles */
+body {
+  color: #202020;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+header, footer {
+  background-color: #333333;
+  color: white;
+}
+
+.header, .footer {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header a, .footer a {
+  color: white;
+  text-decoration: none;
+  padding: 0 15px;
+  font-weight: bold;
+}
+
+.header a:hover, .footer a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content */
+h1, h2, h3 {
+  color: #504e4e;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Book List */
+.book-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+
+.book-item:hover {
+  transform: scale(1.02);
+}
+
+.book-item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.book-item h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.book-item p {
+  color: #5a5959;
+  font-size: 16px;
+}
+
+.book-item a {
+  display: inline-block;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.book-item a:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"], form input[type="password"], form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #444;
+}
+
+/* Buttons */
+.btn {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  font-size: 14px;
+}
+
+.page-footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.page-footer a:hover {
+  text-decoration: underline;
+}

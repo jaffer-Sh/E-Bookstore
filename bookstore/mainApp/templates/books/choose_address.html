@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Select Delivery Address</h1>
+    <ul>
+        {% for address in addresses %}
+            <li>
+                {{ address.address_line }}, {{ address.city }}, {{ address.postal_code }}
+                <form method="post" action="{% url 'choose_address' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="address_id" value="{{ address.id }}">
+                    <button class='btn' type="submit">Confirm Address</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_address' %}">Add New Address</a>
+{% endblock %}
